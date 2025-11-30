@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Merry Christmas</title>
+    <link rel="icon" type="image/jpg" href="back-16.jpg">
+
+    <style>
+        /* Corpo della pagina */
+        body {
+            background-image: url(back.jpg);
+            background-color: #fff0f5;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Titoli */
+        h1, h3, h4 { color: #c71585; }
+
+        h1 { text-shadow: 3px 2px 5px #ff69b4; }
+
+        /* Lista con emoji */
+        ul {
+            list-style-type: "🎄 ";
+            text-align: left;
+            display: inline-block;
+        }
+
+        /* Video */
+        video {
+            margin-top: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px pink;
+        }
+
+        /* Margini titoli */
+        h3, h4 { margin-bottom: 10px; }
+
+        /* Animazione cuore battente */
+        .heartbeat {
+            animation: beat 1s infinite;
+            color: #ff1493;
+            position: absolute;
+            right: 100px;
+            top: 200px;
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Testo luccicante */
+        .luccichio {
+            background: linear-gradient(90deg, pink, red, gold, pink);
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: shine 2s linear infinite;
+        }
+
+        @keyframes shine {
+            0% { background-position: 0 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Glow effect testo */
+        .glow-text {
+            color: white;
+            font-size: 36px;
+            animation: glow 2s infinite;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #ff00cc; }
+            50% { text-shadow: 0 0 20px #ff00cc; }
+            100% { text-shadow: 0 0 5px #ff00cc; }
+        }
+
+        /* Animazione cuoricini che salgono */
+        @keyframes rise {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+
+        /* Sfocatura sfondo */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(5px);
+            z-index: -1;
+        }
+
+        button {
+            background-color: #ff69b4;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            color: white;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px pink;
+        }
+
+        @media (max-width: 600px) {
+            ul { margin-right: 0; }
+            h1, h3 { font-size: 1.2em; }
+            video { width: 90%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Titoli di auguri -->
+    <h1><mark style="background-color: pink;">Auguri di buon Natale amore mio</mark></h1>
+    <h3><mark style="background-color: pink;">Ho pensato di fare qualcosa di carino per Natale, spero solo che ti piaccia.</mark></h3>
+    <h3 class="glow-text">🤍Sei il mio regalo di Natale più bello🤍</h3>
+
+    <!-- Pulsante musica -->
+    <audio id="musica" loop>
+        <source src="wish.mp3" type="audio/mpeg">
+    </audio>
+    <button onclick="document.getElementById('musica').play()" style="position: absolute; top: 50px; left: 50px;">
+        🎅Clicca qui dai🎅
+    </button>
+
+    <!-- Video -->
+    <video src="Buon.mp4" width="500" controls autoplay loop></video>
+
+    <!-- Lista motivi -->
+    <h4>Piccoli motivi per il quale voglio stare sempre con te:</h4>
+    <ul>
+        <li style="color: red;">Ti amo</li>
+        <li style="color: red;">Sei sempre bellissima</li>
+        <li style="color: red;">Amo il tuo carattere timidino</li>
+        <li style="color: red;">Amo i tuoi capelli sempre profumati</li>
+        <li style="color: red;">Ti vesti sempre bene</li>
+        <li style="color: red;">Ti piacciono gli anime</li>
+        <li style="color: red;">Sei sempre profumata</li>
+        <li style="color: red;">Sei sempre di compagnia</li>
+        <li style="color: red;">Amo la tua voce</li>
+        <li style="color: red;">Amo i tuoi occhi</li>
+    </ul>
+
+    <!-- Messaggi speciali -->
+    <h3 class="luccichio">Semplicemente <mark style="background-color: pink;">PERFETTA</mark> sotto ogni aspetto.</h3>
+    <h2 class="heartbeat">Ti amo più di ogni cosa 💖</h2>
+
+    <!-- Pulsante mostra amore -->
+    <button onclick="showLove()" style="position: absolute; bottom: 100px; right: 50px">
+        💌 Clicca qui se mi ami 💌
+    </button>
+    <p id="love" style="display:none; font-size:20px; position: absolute; bottom: 50px; right: 50px; color:#d63384;">
+        Ti amo anche iooo ❤️
+    </p>
+
+    <!-- Cuoricini che salgono -->
+    <script>
+        setInterval(() => {
+            const heart = document.createElement("div");
+            heart.innerHTML = "💖 🎄";
+            heart.style.position = "fixed";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.bottom = "0px";
+            heart.style.fontSize = Math.random() * 20 + 20 + "px";
+            heart.style.animation = "rise 4s linear forwards";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }, 600);
+
+        // Funzione mostra amore
+        function showLove() {
+            document.getElementById("love").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
